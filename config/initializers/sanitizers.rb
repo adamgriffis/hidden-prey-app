@@ -1,0 +1,1 @@
+require "#{Rails.application.root}/lib/player_sanitizer.rb"

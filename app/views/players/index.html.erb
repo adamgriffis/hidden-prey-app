@@ -1,0 +1,7 @@
+<ul class="users">
+  <% @players.each do |player| %>
+    <li>
+      <%= link_to player.username, player %> signed up <%= player.created_at.to_date %>
+    </li>
+  <% end %>
+</ul>

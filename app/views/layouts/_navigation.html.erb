@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to "Hunter/Prey", root_path, :class=> "navbar-brand" %>
+  </div>
+
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+  	<ul class="nav navbar-nav">
+  		<% if player_signed_in? %>
+			<li>
+				<%= link_to 'Logout', destroy_player_session_path, :method=>'delete' %>
+			</li>
+		<% else %>
+			<li>
+				<%= link_to 'Login', new_player_session_path %>
+			</li>
+		<% end %>
+		<% if player_signed_in? %>
+			<li>
+				<%= link_to 'Edit Account', edit_player_registration_path %>
+			</li>
+		<% else %>
+			<li>
+				<%= link_to 'Sign up', new_player_registration_path %>
+			</li>
+		<% end %>
+  	</ul>
+  </div>
+</nav>
