@@ -10,3 +10,6 @@ puts 'DEFAULT USERS'
 user = Player.find_or_create_by_email :username => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.username
 user.save!
+
+user2 = Player.find_or_create_by_email :username => "testuser".dup, :email => "test@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup
+user2.save!

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015020440) do
+ActiveRecord::Schema.define(version: 20131016063514) do
+
+  create_table "games", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "creator_id"
+  end
 
   create_table "players", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,7 +36,7 @@ ActiveRecord::Schema.define(version: 20131015020440) do
     t.string   "username"
   end
 
-  add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
-  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
+  add_index "players", ["email"], name: "index_players_on_email", unique: true
+  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
 
 end

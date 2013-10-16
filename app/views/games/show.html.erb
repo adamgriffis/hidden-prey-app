@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game.name %>
+</p>
+<p>
+	<strong>Created by:</strong>
+	<%= Player.find(@game.creator_id).username %>
+</p>
+
+<% if @game.creator_id == current_player.id %>
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<% end %>
+<%= link_to 'Back', games_path %>
+
