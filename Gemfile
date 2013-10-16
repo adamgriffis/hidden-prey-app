@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use postgress as the database for Active Record
-gem 'pg'
+#gem 'pg'
+gem 'sqlite3'
 
 group :assets do
   gem 'sass-rails'
