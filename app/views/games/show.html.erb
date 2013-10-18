@@ -8,6 +8,16 @@
 	<strong>Created by:</strong>
 	<%= Player.find(@game.creator_id).username %>
 </p>
+<p>
+	<strong>Players:</strong>
+	<% if @game.players.size == 0 %>
+		<p> No players for this game. </p>
+	<% else %>
+		<% @game.players.each do |p| %>
+			<%= p.username %>
+		<% end %>
+	<% end %>
+</p>
 
 <% if @game.creator_id == current_player.id %>
 <%= link_to 'Edit', edit_game_path(@game) %> |

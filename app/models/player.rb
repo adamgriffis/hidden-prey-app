@@ -7,4 +7,6 @@ class Player < ActiveRecord::Base
 
   validates :username, uniqueness: true, presence: true, :case_sensitive => false
 
+  has_many :game_players
+  has_many :games, :through => :game_players
 end

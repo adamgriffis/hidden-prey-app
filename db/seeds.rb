@@ -11,6 +11,30 @@ user = Player.find_or_create_by_email :username => ENV['ADMIN_NAME'].dup, :email
 puts 'user: ' << user.username
 user.save!
 
-user2 = Player.find_or_create_by_email :username => "testuser".dup, :email => "test@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup, :admin => false, :confirmed_at => Time.now
-user2.save!
-puts 'user: ' << user2.username
+user = Player.find_or_create_by_email :username => "Alice".dup, :email => "alice@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup, :admin => false, :confirmed_at => Time.now
+user.save!
+puts 'user: ' << user.username
+
+user = Player.find_or_create_by_email :username => "Bob".dup, :email => "bob@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup, :admin => false, :confirmed_at => Time.now
+user.save!
+puts 'user: ' << user.username
+
+user = Player.find_or_create_by_email :username => "Chad".dup, :email => "chad@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup, :admin => false, :confirmed_at => Time.now
+user.save!
+puts 'user: ' << user.username
+
+user = Player.find_or_create_by_email :username => "Diego".dup, :email => "diego@test.org".dup, :password => "testpass".dup, :password_confirmation => "testpass".dup, :admin => false, :confirmed_at => Time.now
+user.save!
+puts 'user: ' << user.username
+
+puts 'TEST GAMES'
+game = Game.new({:name => "emptyGame", :creator_id => 1})
+game.save!
+puts 'game: ' << game.name
+
+game = Game.new({:name => "fullGame", :creator_id => 1})
+game.players << Player.find(1)
+game.players << Player.find(2)
+game.players << Player.find(3)
+game.save!
+puts 'game: ' << game.name
