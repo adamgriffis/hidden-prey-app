@@ -12,14 +12,16 @@
 
   <tbody>
     <% @games.each do |game| %>
-      <tr>
-        <td><%= game.name %> <%= (Player.find(game.creator_id)).username %></td>
-        <td><%= link_to 'Show', game %></td>
-        <% if game.creator_id == current_player.id %>
-        <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <% if ((game.players.include?(current_player)) or (game.creator_id == current_player.id)) %>
+        <tr>
+          <td><%= game.name %> <%= (Player.find(game.creator_id)).username %></td>
+          <td><%= link_to 'Show', game %></td>
+          <% if game.creator_id == current_player.id %>
+            <td><%= link_to 'Edit', edit_game_path(game) %></td>
+            <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
