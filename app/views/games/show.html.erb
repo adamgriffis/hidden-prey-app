@@ -19,6 +19,18 @@
 	<% end %>
 </p>
 
+<p>
+	<strong>Turns:</strong>
+	<% if @game.turns.size == 0 %>
+		<p> No turns for this game. </p>
+	<% else %>
+		<% @game.turns.each do |turn| %>
+			<%= link_to 'Show', turn %>
+		<% end %>
+	<% end %>
+	<%= @game.turns.size %>
+</p>
+
 <% if @game.creator_id == current_player.id %>
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <% end %>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<%= Game.find(@turn.game_id).name %>
+<% if @turn.moves.size == 0 %>
+	<p> No moves for this game </p>
+<% else %>
+	<p> These players have moved: </p>
+	<% @turn.moves.each do |move| %>
+		<%= Player.find(move.player_id).username %>
+	<% end %>
+<% end %>
+
+<% plmove = @turn.moves.find { |move| move.player_id == current_player.id } %>
+<% if plmove.nil? %>
+	<p> You have not made a move for this game yet. 
+		<%= link_to 'Add Move', Move.create(:player_id => current_player.id, :turn_id => @turn.id) %></p>
+<% end %>
+
+<% if Game.find(@turn.game_id).creator_id == current_player.id %>
+	<%= link_to 'Edit', edit_turn_path(@turn) %> |
+<% end %>
+<%= link_to 'Back', turns_path %>
+

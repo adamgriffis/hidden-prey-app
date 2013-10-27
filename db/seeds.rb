@@ -36,5 +36,6 @@ game = Game.new({:name => "fullGame", :creator_id => 1})
 game.players << Player.find(1)
 game.players << Player.find(2)
 game.players << Player.find(3)
+game.turns << Turn.new
 game.save!
 puts 'game: ' << game.name

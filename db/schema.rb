@@ -11,13 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018014427) do
+ActiveRecord::Schema.define(version: 20131024064313) do
+
+  create_table "game_players", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+  end
+
+  create_table "moves", force: true do |t|
+    t.integer  "turn_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "players", force: true do |t|
@@ -41,8 +55,14 @@ ActiveRecord::Schema.define(version: 20131018014427) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "players", ["confirmation_token"], name: "index_players_on_confirmation_token", unique: true, using: :btree
-  add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
-  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true, using: :btree
+  add_index "players", ["confirmation_token"], name: "index_players_on_confirmation_token", unique: true
+  add_index "players", ["email"], name: "index_players_on_email", unique: true
+  add_index "players", ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
+
+  create_table "turns", force: true do |t|
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
